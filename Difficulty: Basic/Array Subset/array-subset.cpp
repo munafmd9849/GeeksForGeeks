@@ -4,9 +4,9 @@ class Solution {
     bool isSubset(vector<int> &a, vector<int> &b) {
         // Your code here
         unordered_map<int ,int> mapp;
-        for(auto i:a){
-            mapp[i]=0;
-        }
+        // for(auto i:a){
+        //     mapp[i]=0;
+        // }
         for(auto i:a){
             mapp[i]++;
         }
