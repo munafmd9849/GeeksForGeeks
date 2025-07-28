@@ -1,15 +1,30 @@
 class Solution {
   public:
-    int countPairs(vector<int> &arr, int k) {
+    int countPairs(vector<int> &arr, int target) {
+        sort(arr.begin(),arr.end());
         // Code here
-        int n=arr.size(),c=0;
-        unordered_map<int,int>um;
-        for(int i=n-1;i>=0;i--){   // i<j
-            if(um.find(k-arr[i])!=um.end()){
-                c+=um[k-arr[i]];
+        int p1=0,p2=arr.size()-1,c=0;
+        
+        while(p1<p2){
+            if(arr[p1]+arr[p2]==target){
+                c++;
+                int i=p1+1,j=p2-1;
+                while(i<p2 && arr[i]==arr[p1]){
+                    c++;
+                    i++;
+                }
+                while(j>p1 && arr[j]==arr[p2]){
+                    c++;
+                    j--;
+                }
+                p1++;p2--;
             }
-            um[arr[i]]++;
-            
+            else if(arr[p1]+arr[p2]>target){
+                p2--;
+            }
+            else{
+                p1++;
+            }
         }
         return c;
     }
