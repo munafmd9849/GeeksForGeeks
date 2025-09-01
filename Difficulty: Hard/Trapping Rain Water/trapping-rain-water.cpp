@@ -4,7 +4,7 @@ class Solution {
         // code here
         int n=arr.size();
         vector<int> pf(n);
-        vector<int> ans(n,0);
+        //vector<int> ans(n,0);
         vector<int> sf(n);
         int maxi=INT_MIN;
         for(int i=0;i<n;i++){
@@ -12,7 +12,6 @@ class Solution {
                 maxi=arr[i];
             }
             pf[i]=maxi;
-            
         }
         maxi=INT_MIN;
         for(int i=n-1;i>=0;i--){
@@ -21,16 +20,16 @@ class Solution {
             }
             sf[i]=maxi;
         }
+        int sum=0;
         for(int i=1;i<n-1;i++){
             int lh=pf[i-1];
             int rh=sf[i+1];
             int minh=min(lh,rh);
-            ans[i]=max(minh-arr[i],0);
+            sum+=max(minh-arr[i],0);
         }
-        int sum=0;
-        for(int i:ans){
-            sum+=i;
-        }
-        return sum;
+        // for(int i:ans){
+        //     sum+=i;
+        // }
+         return sum;
     }
 };
