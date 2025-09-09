@@ -8,7 +8,7 @@ class Solution {
         // Write your code here
         int n=stalls.size();
         sort(stalls.begin(),stalls.end());
-        int l=1,h=stalls[n-1]-stalls[0],ans=0;
+        int l=1,h=stalls[n-1],ans=0;
      
         while(l<=h){
             int mid=(l+h)/2;
