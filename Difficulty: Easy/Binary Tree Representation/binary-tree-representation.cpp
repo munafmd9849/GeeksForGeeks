@@ -1,0 +1,41 @@
+// User function Template for C++
+
+/*struct node {
+  int data;
+  struct node *left;
+  struct node *right;
+};
+
+struct node *newNode(int data) {
+  struct node *node = (struct node *)malloc(sizeof(struct node));
+
+  node->data = data;
+
+  node->left = NULL;
+  node->right = NULL;
+  return (node);
+}*/
+
+class Solution {
+  public:
+
+    node* create(vector<int>&vec,int i){
+        
+        if(i >= vec.size()) return nullptr;
+    
+        node* root=newNode(vec[i]);
+        root->left=create(vec,2*i+1);
+        root->right=create(vec,2*i+2);
+
+        
+        
+        return root;
+        
+        
+    }
+    void create_tree(node*& root0, vector<int>& vec) {
+        // Your code goes here
+        root0=create(vec,0);
+    }
+    
+};
