@@ -8,39 +8,23 @@ struct Node {
 };*/
 class Solution {
   public:
-        vector<int> inOrder(Node* root) {
+    vector<int> inOrder(Node* root) {
         // code here
-        stack<Node*>s;
-        stack<bool>visited;
-       s.push(root);
-        visited.push(0);
-         vector<int>ans;
-        while(!s.empty())
-        {
-            Node*temp=s.top();
-            s.pop();
-            bool flag=visited.top();
-            visited.pop();
-            if(!flag)
-            {
-                if(temp->right)
-                {
-                s.push(temp->right);
-                visited.push(0);
-                }
-                s.push(temp);
-                visited.push(1);
-                if(temp->left)
-                {
-                    s.push(temp->left);
-                    visited.push(0);
-                }
+        stack<Node*> st;
+        Node*rt=root;
+        vector<int> a;
+        while(rt!=nullptr || st.size()>0){
+            if(rt!=nullptr){
+                st.push(rt);
+                rt=rt->left;
             }
-            else
-            {
-                ans.push_back(temp->data);
+            else{
+                Node* t=st.top();
+                st.pop();
+                a.push_back(t->data);
+                rt=t->right;
             }
         }
-        return ans;
+        return a;
     }
 };
